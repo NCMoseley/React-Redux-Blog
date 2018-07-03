@@ -15,8 +15,11 @@ export function fetchPosts() {
   };
 }
 
-export function createPost(values) {
-  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values);
+export function createPost(values, callback) {
+  const request = axios
+    .post(`${ROOT_URL}/posts${API_KEY}`, values)
+    // this callback handles the race condition that is created when the post is submitted and the user is navigated back to the ondex page.
+    .then(() => callback());
 
   return {
     type: CREATE_POST,

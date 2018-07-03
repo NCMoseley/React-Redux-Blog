@@ -15,16 +15,17 @@ class PostsNew extends Component {
         <input className="form-control" type="text" {...field.input} />
         {/* The three meta states of the input fields are "pristine", "touched", "invalid" */}
         <div className="text-help">
+          {/* This will display the strings provided in the validation function. */}
           {field.meta.touched ? field.meta.error : ""}
         </div>
       </div>
     );
-    // This will display the strings provided in the validation function.
   }
 
   onSubmit(values) {
-    this.props.history.push("/");
-    this.props.createPost(values);
+    this.props.createPost(values, () => {
+      this.props.history.push("/");
+    });
   }
 
   render() {
