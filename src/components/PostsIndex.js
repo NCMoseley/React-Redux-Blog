@@ -25,7 +25,7 @@ class PostsIndex extends Component {
       <div>
         <div className="text-xs-right">
           <Link className="btn btn-primary margin-top" to="/posts/new">
-            Add a post!
+            Add a post
           </Link>
         </div>
         <h3>Posts</h3>
