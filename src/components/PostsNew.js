@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 
 class PostsNew extends Component {
   renderField(field) {
+    const className = `form-group ${
+      field.meta.touched && field.meta.error ? "has-danger" : ""
+    }`;
     return (
-      <div className="form-group">
+      <div className={className}>
         <label>{field.label}</label>
         <input className="form-control" type="text" {...field.input} />
-        {field.meta.error}
+        {/* The three meta states of the input fields are "pristine", "touched", "invalid" */}
+        <div className="text-help">
+          {field.meta.touched ? field.meta.error : ""}
+        </div>
       </div>
     );
     // This will display the strings provided in the validation function.
@@ -37,6 +44,9 @@ class PostsNew extends Component {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+        <Link to="/" className="btn btn-danger">
+          Cancel
+        </Link>
       </form>
     );
   }
@@ -47,20 +57,21 @@ function validate(values) {
   const errors = {};
 
   // Validate the inputs from 'values'
-  // if (values.title.length < 3) {
-  //   errors.title = "Title must be at least 3 characters";
-  // }
-  if (!values.title) {
-    errors.title = "Enter a title!";
+
+  if (values.title && values.title.length < 3) {
+    errors.title = "Title must be at least 3 characters";
   }
-  // if (values.categories.length < 3) {
-  //   errors.categories = "Categories must be at least 3 characters";
-  // }
+  if (!values.title) {
+    errors.title = "Enter a title";
+  }
+  if (values.categories && values.categories.length < 3) {
+    errors.categories = "Categories must be at least 3 characters";
+  }
   if (!values.categories) {
-    errors.categories = "Enter some categories!";
+    errors.categories = "Enter some categories";
   }
   if (!values.content) {
-    errors.content = "Enter some content please!";
+    errors.content = "Enter some content";
   }
 
   // If errors is empty, the form is fine to submit
