@@ -23,6 +23,9 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
+        <div>
+          <h1 className="center">The PHP-Free Blog platform for Node Lovers</h1>
+        </div>
         <div className="text-xs-right">
           <Link className="btn btn-primary margin-top" to="/posts/new">
             Add a post

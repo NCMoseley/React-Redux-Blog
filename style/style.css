@@ -5,3 +5,8 @@ form a {
 .margin-top {
   margin-top: 10px;
 }
+
+.center {
+  text-align: center;
+  margin: 20px;
+}

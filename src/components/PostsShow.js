@@ -25,6 +25,9 @@ class PostsShow extends Component {
 
     return (
       <div>
+        <div>
+          <h1 className="center">The PHP-Free Blog platform for Node Lovers</h1>
+        </div>
         <Link to="/">Back to Posts</Link>
         <button
           onClick={this.onDeleteClick.bind(this)}
